@@ -1,0 +1,176 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "TODOS API",
+    "description": ""
+  },
+  "host": "localhost:4000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Todo",
+      "description": ""
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/todo/": {
+      "get": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add a Todo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTodo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/todo/{todoId}": {
+      "put": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "todoId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update a Todo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateTodo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "todoId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "todoId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AddTodo": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "title"
+        },
+        "status": {
+          "type": "string",
+          "example": "completed | doing"
+        },
+        "description": {
+          "type": "string",
+          "example": ""
+        }
+      },
+      "required": [
+        "title"
+      ]
+    },
+    "UpdateTodo": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "title"
+        },
+        "status": {
+          "type": "string",
+          "example": "completed | doing"
+        },
+        "description": {
+          "type": "string",
+          "example": ""
+        }
+      },
+      "required": [
+        "title",
+        "status",
+        "description"
+      ]
+    }
+  }
+}
