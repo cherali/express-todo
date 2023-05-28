@@ -1,12 +1,17 @@
-import express, { Request, Response, Application } from 'express'
+import express, { Application } from 'express'
+import { logger } from './startup/logging'
+
+import { middleware } from './startup/middleware'
+import { database } from './startup/db'
+import routes from './startup/routes'
 
 const app: Application = express()
 const port = process.env.PORT || 4000
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript!!')
-})
+middleware(app)
+database()
+routes(app)
 
 app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`)
+  logger.info(`[server]: Server is running at http://localhost:${port}`)
 })
